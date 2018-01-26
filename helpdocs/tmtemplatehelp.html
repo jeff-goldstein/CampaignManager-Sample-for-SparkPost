@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Template Help</h1>
+	<p>Templates are a feature that most Email Service Providers (ESP's) support which gives a user the ability to save a common re-usable email structures.&nbsp; Often, as is in this case, the template supports the ability to merge dynamic data into the template just before sending in order to personalize the email either at a group level (everyone getting the current email) or even down to the individual user.&nbsp;</p>
+	<p>When using templates, common headers, footers, colors and general email structure can be saved off so each use of the template will keep your branding consistent.&nbsp; Templating also helps speed the process of change.&nbsp; Often, homegrown email systems have locked down email formats that can only be changed by development.&nbsp; As we all know, development changes can often take a long time to work through the typical change process.&nbsp; But when using a system that allows for the user to change the template via a user interface, changes can be made quickly by many different people outside of development.&nbsp; Depending on the complexity of the change, development's help may be needed, but that tends to be a rare occurance.</p>
+	<p>This template manager is build on top of the SparkPost email platform and interfaces with the SparkPost server via their API's, never keeping data except within your own SparkPost account.&nbsp; The SparkPost platform supports two versions of a template at any given time; <strong><em>Draft</em></strong> and <strong><em>Published</em></strong>.&nbsp; This template manager also gives you access to both those versions.&nbsp;&nbsp;</p>
+	<p>At the top of the page, the user has the option to either enter in the name of a new template they wish to create, or to select a stored template from the pulldown.&nbsp; On coming to this page, the system will automatically go to the users SparkPost account and retrieve all templates available to that user.&nbsp; Available templates may conprise of two groups of templates; the templates created by this user, and those created by the master account and shared with all users.&nbsp; Those shared from the master account are read only and can not be changes.&nbsp; They can be <em><strong>copied</strong></em> though by taking the following steps:</p>
+	<ol>
+		<li>Select a shared template from the Stored Template pull down</li>
+		<li>Enter in a new template name at the top of the page</li>
+		<li>Under the <em><strong>Draft</strong></em>&nbsp;template editing section, press either the <em><strong>Save Draft</strong></em> or <strong><em>Save and Publish</em></strong> button.&nbsp;</li>
+	</ol>
+	<p>Now you have an editable version of that shared template.&nbsp; If the master copy is changed at a latter time, those changes <em><strong>will not</strong></em> affect your copy.</p>
+	<h1>Draft</h1>
+	<p>As discussed earlier, there can be two copies of your template, <strong><em>Draft</em></strong> and <em><strong>Published</strong></em>.&nbsp; You should think of them as two seperate entities.&nbsp; Also, each copy has both a HTML and Text version of the template.&nbsp; Two move from the <em><strong>Draft</strong></em> or <em><strong>Published</strong></em> copies of your template, simply select the appropriate link under the <em><strong>Template Code/Text header</strong></em>.&nbsp; &nbsp;When working with the <em><strong>Draft</strong></em> copy of the HTML template, you are presented with an embedded WYSIWYG HTML editor.&nbsp; Since most editors are similar, this help section will not be a tutorial on using the editor.&nbsp; Under the draft section you are also able to set up your <em><strong>Email Text</strong></em> section.&nbsp; Since the email text section is simple text, you are only presented with a simple text dialog box for entering in that data.&nbsp; If you choose to save off the draft, or even publish the draft, you may do so within either <strong><em>Draft</em></strong> page.&nbsp; The <strong><em>Preview</em></strong> tab/link allows you to see what the email may look like.&nbsp; &nbsp;If you have entered in data within the <strong><em>Test Recipient Data</em></strong> section, that data will be used to demonstrate what they email may look like.&nbsp; If data for more than one recipient has been entered; only the data for the first recipient will be used for the <strong><em>Preview</em></strong>.</p>
+	<p>Please keep in mind, that when you use the <em><strong>Save and Publish</strong></em> button, you are writing over your current published version.&nbsp;</p>
+	<h1>Published</h1>
+	<p>The <em><strong>Published</strong></em> section is similar in the <em><strong>Draft</strong></em> section, in the fact that it have both an <em><strong>HTML</strong></em> and <em><strong>Text</strong></em> section; but it's different, in the fact that it's <em><strong>READ ONLY</strong></em>.&nbsp; &nbsp;Yes, Published template data can not be modified.&nbsp; If you want to modify that code/html, you must copy the HTML/TEXT data over to the <em><strong>Draft</strong></em> section for editing.&nbsp; There is a handy button in the <em><strong>Published</strong></em> section to help with that.&nbsp; Keep in mind, the <em><strong>Copy</strong></em> button will overwrite your current draft data.&nbsp;&nbsp;Also, the supporting data like From, Reply To, Subject, etc, are NOT copied from the Published template to Draft.&nbsp; You must go to the bottom of the page and make those changes yourself.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>* note * If you copy published code to the draft fields, that data will only be kept once you press the <em><strong>Save Draft</strong></em> or <em><strong>Save and Publish</strong></em> button.</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>You can also Preview your published code by going to the <em><strong>Preview</strong></em> button in the <em><strong>Published</strong></em> section.</p>
+	<h1>Quicktest</h1>
+	<p>This is where things get a little complicated.&nbsp; At the bottom of the Template Manager page are buttons that allow you to send test emails to email address that have been entered into the <em><strong>Test Recipient Data</strong></em> section.&nbsp; That powerful option gives you the ability to send a unique email to each user with their own data set.&nbsp; That data must be entered in either in CSV or JSON format; which depending on your template, can be very complex.&nbsp; The <em><strong>Help</strong></em> tab within that section will discribe how this is done in detail.</p>
+	<p>But sometimes you don't want to enter in data and you just want to see what the email will look like even if it might look poorly without data.&nbsp; This is where <em><strong>Quicktest</strong></em> comes in.&nbsp; <em><strong>Quicktest</strong></em> takes a list of comma seperated email addresses and will send the same email to all users entered into the <em><strong>Quicktest</strong></em> data field.&nbsp; Even if there is data within the <em><strong>Test Recipient Data</strong></em> fields, they will <em><strong>NOT</strong></em> be used.&nbsp; To use that data, you must use the buttons toward the bottom of the page.</p>
+	<h1>Substitution Fields</h1>
+	<p>SparkPost has a very rich substitution capability that can be used to personalize any email.&nbsp; For the most part, substitution fields are represented within the HTML by double curly brackets.&nbsp; For example, if you want to personalize the greeting, you might have the following HTML code in the template:</p>
+	<p>&lt;h3&gt;Hello {{first_name}},&lt;/h3&gt;</p>
+	<p>This is a very simple example of embedding the substitution fields within the HTML code.&nbsp; In reality, you would probably have a default entry just in case the first name wasn't available:</p>
+	<p>&lt;h3&gt; Hello {{ name or 'Customer' }}</p>
+	<p>SparkPost also has other conditional capabilities, the ability to loop through arrays of data and a myraid of other capabilities.&nbsp;For a full explanation of the substitution capabilities that are available to you, please refer to the documentation at SparkPost::&nbsp;</p>
+	<p><a href="https://developer.sparkpost.com/api/substitutions-reference.html" rel="noopener" target="_blank">SparkPost Substitution Documentation</a></p><!-- END NEWS SECTION WHICH DEMONSTRATES USAGE OF DYNAMIC HTML CHUNKS -->
+</body>
+</html>

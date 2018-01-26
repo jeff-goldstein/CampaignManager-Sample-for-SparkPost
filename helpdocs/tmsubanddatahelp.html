@@ -1,0 +1,103 @@
+<p>To support today's need for personalized emails SparkPost has built in the ability to dynamically add data into an email.&nbsp; Personalization can be anywhere from simply adding of the recipients name to the email to showing unique information within the body of the email that reflects things like products, news, jobs, etc.&nbsp; If the template being created uses substitution fields, most users want to see/preview what the template would look like with sample data.&nbsp; That is where this section comes in.&nbsp; The <strong><em>Test Recipient Data</em></strong> section allows you to enter in substitution data in order to preview what the email will look like.&nbsp; It even gives you the ability to send as many test emails that you wish to send, each with their own unique set of substitution data!</p>
+<p>To support this flexible feature, the substitution data&nbsp; can be as complex as you need, but does have a length limit of 70K characters. This data will be used in the Preview&nbsp; feature within the <em><strong>Draft/Published Preview</strong></em> sections as-well-as the test sends when using the <em><strong>Send Test Draft/Published Emails with Data</strong></em> buttons at the bottom of the Template Manager page.</p>
+<h1>Using CSV or JSON Test Data</h1>
+<p>There are three data entry sections that can be used for test data; <em><strong>Recipient CSV,</strong></em>&nbsp; <em><strong>Recipient JSON</strong></em> and <em><strong>Global</strong></em> Substitution Data fields.&nbsp; SparkPost substitution data must be in what is call a JSON format.&nbsp;&nbsp;JSON, or JavaScript Object Notation, is a minimal, readable format for structuring data. It is used primarily to transmit data between a server and web application.&nbsp;&nbsp;</p>
+<p>The two primary parts that make up JSON are keys and values. Together they make a key/value pair.</p>
+<ul>
+    <li><strong>Key:</strong>&nbsp;A key is always a string enclosed in quotation marks.</li>
+    <li><strong>Value:</strong>&nbsp;A value can be a string, number, boolean expression, array, or object.</li>
+    <li><strong>Key/Value Pair:</strong>&nbsp;A key value pair follows a specific syntax, with the key followed by a colon followed by the value. Key/value pairs are comma separated.</li>
+</ul>
+<p>A simple internet search will help you understand JSON further if you need a deeper understanding.&nbsp; While JSON is a well known data format for developers, it's not as well known as CSV files are to most people.&nbsp; So in order to help users test their templates, the Template Manager supports test data being entered into this system via CSV format.&nbsp;&nbsp;</p>
+<p>The only field that MUST be in the list is the "address" field; all others are optional. Once entered, press the 'Convert to JSON' button in order to change your CSV input into the JSON format the server can understand. The first row is always the names of the fields, separated by commas and incased in quotes.&nbsp; A very simple Recipient CSV sample with just address names will look like this:</p>
+<p style="padding-left: 30px;"><code>"address"</code>
+    <br /><code>"jeff.gold@sparkpost.com",</code>
+    <br /><code>"austin23112@hotmail.com",</code>
+    <br /><code>"donna@geeks.com"</code>
+</p>
+<p>The following JSON output will be created.&nbsp; This structure is actually an array of the names just entered.&nbsp; Notice that the JSON structure actually starts with the word "recipients".&nbsp; That is automatically added for you and is mandatory for the SparkPost email platform.</p>
+<p style="padding-left: 30px;"><code>{"recipients":[{"address":"jeff.gold@sparkpost.com"},</code>
+    <br /><code>{"address":"austin23112@hotmail.com"},</code>
+    <br /><code>{"address":"donna@geeks.com"}]}</code>
+</p>
+<p>If you have substitution data, you must have a field name "substitution" and all data following it on that row will be considered substitution_data fields. Here is an example:</p>
+<pre style="padding-left: 30px;"><code>"address","UserName","substitution","first","id","city"
+"jeff.goldstein@sparkpost.com","Sam Smith","_","Sam",342,"Princeton"
+"austein@hotmail.com","Fred Frankly","_","Fred",38232,"Nowhere"
+"jeff@geekswithapersonality.com","Zachary Zupers","_","Zack",9,"Hidden Town"
+</code></pre>
+<p><strong>Please notice that in each data row, there is an underscore that represents the data for the "substitution" field.&nbsp; IT MUST BE AN UNDERSCORE!! The system will use the combination of the substitution/underscore to determine the beginning of the substitution data.</strong> The above sample will change to the following JSON format which will be displayed in the <em><strong>Recipient JSON</strong></em> entry field (if you have data in the <em><strong>Recipient JSON</strong></em> data field prior to hitting the 'Convert to JSON' button, that data will be overridden):</p>
+<table>
+    <tbody>
+        <tr>
+            <td><code>{"recipients":[{"address":"jeff.goldstein@sparkpost.com","UserName":"Sam Smith","substitution_data":{"first":"Sam","id":"342","city":"Princeton"}},</code>
+                <br /><code>{"address":"austein@hotmail.com","UserName":"Fred Frankly","substitution_data":{"first":"Fred","id":"38232","city":"Nowhere"}},</code>
+                <br /><code>{"address":"jeff@geekswithapersonality.com","UserName":"Zachary Zupers","substitution_data":{"first":"Zack","id":"9","city":"Hidden Town"}}]}</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;">{</span>Yes that is ugly; so by using a json formatter (<a href="http://jsonlint.com/">JSONLINT</a>), you can see what the output looks like in human readable form. Notice that the dash does not show up in your data:</p>
+<pre style="padding-left: 30px;"><code> "recipients": [{
+  "address": "jeff.goldstein@sparkpost.com",
+  "UserName": "Sam Smith",
+  "substitution_data": {
+   "first": "Sam",
+   "id": "342",
+   "city": "Princeton"
+  }
+ }, {
+  "address": "austein@hotmail.com",
+  "UserName": "Fred Frankly",
+  "substitution_data": {
+   "first": "Fred",
+   "id": "38232",
+   "city": "Nowhere"
+  }
+ }, {
+  "address": "jeff@geekswithapersonality.com",
+  "UserName": "Zachary Zupers",
+  "substitution_data": {
+   "first": "Zack",
+   "id": "9",
+   "city": "Hidden Town"
+  }
+ }]
+}
+</code></pre>
+<p><em>NOTE: JSONLINT is a great tool. There is also a PRO version: <a href="http://pro.jsonlint.com/">PRo JSONLINT</a>. JSON LINT is open source GitHub repository available. These tools can save you a ton of time in figuring out why your JSON is being rejected.</em>
+</p>
+<p>Again, the JSON structure must start with the 'recipients' key field which is followed by an array of recipient data.</p>
+<p>If you wish, you can skip the CSV process and enter (cut/paste) JSON directly into the <em><strong>Recipient JSON</strong> </em>data field, go right ahead. There is a sample of what the structure needs to look like in the data field itself. The field is expected to be a good JSON format and can have as many users in it as you with up to 700K of data. Depending on the number of substitution fields you have that could be a lot of users for your test emails!!</p>
+<p>There is also a Validate JSON Structure button that will check to make sure that you have a valid JSON format.&nbsp; IT DOES NOT make sure that this is a valid SparkPost format; it is simply validating against proper JSON formatting rules.</p>
+<h1>Global Data</h1>
+<p>When entered, Global data will also be used during the test email send. Global Substitution fields are similar to Recipient data but they are used for every recipient.&nbsp; If the same name is used in both Global and Recipients data fields, the Recipient data will override the Global data.&nbsp; Global fields are general data fields like company URL's, CSS color and format changes and even product array's that are referenced within the recipient data structures.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<h1>Template References</h1>
+<table style="width: 1061px;">
+    <tbody>
+        <tr>
+            <td style="width: 557px;">&nbsp;</td>
+            <td style="width: 502px;">
+                <p>Reference Link</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 557px;">SparkPost Blogs focused on Templating.&nbsp; Most of these are technical in nature and very good references for the beginner.</td>
+            <td style="width: 502px;"><a href="https://www.sparkpost.com/blog/category/feature/templates/">https://www.sparkpost.com/blog/category/feature/templates/</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 557px;">SparkPost Substitution reference guide.&nbsp; Very technical walkthrough of all substitution capabilities.</td>
+            <td style="width: 502px;"><a href="https://developers.sparkpost.com/api/substitutions-reference.html">https://developers.sparkpost.com/api/substitutions-reference.html</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 557px;">&nbsp;Github repository of complex template samples along with supporting JSON data formats.</td>
+            <td style="width: 502px;">&nbsp;<a style="font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit;" href="https://github.com/jeff-goldstein/sparkpost/tree/master/Templates">https://github.com/jeff-goldstein/sparkpost/tree/master/Templates</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
