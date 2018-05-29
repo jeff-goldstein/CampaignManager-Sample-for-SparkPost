@@ -2,7 +2,7 @@
 {
 //Purpose:  To retrieve all message events from the SparkPost server that have been created
 //in the last 10 days.
-error_reporting(0);
+error_reporting(1);
 //
 //Main code body
 //			
