@@ -12,8 +12,10 @@ $emailaddress   = $_POST["emailaddress"];
 date_default_timezone_set('America/Los_Angeles');
 $end = date('Y-m-dTh:i', time() + 86400);
 $end = str_replace ('PDT', 'T', $end);
+$end = str_replace ('PST', 'T', $end);
 $start = date('Y-m-dTh:i', time() - 864000);
-$start = str_replace ('PDT', 'T', $start);
+$start = str_replace ('PDT', 'T', $start); //Used when Daylight savings 
+$start = str_replace ('PST', 'T', $start); //Used when standard time
 
 $curl     = curl_init();
 $url      = $apiroot. "/message-events?recipients=" . urlencode($emailaddress) . "&from=" . $start . "&to=" . $end;
