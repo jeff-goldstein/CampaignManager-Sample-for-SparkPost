@@ -9,14 +9,6 @@ $to   = $_POST["to"];
 $metrics = "count_accepted,count_clicked,count_unique_rendered";
 $slice = "day";  //acceptable values 1min,5min,15min,hour,12hr,day,week,month
 
-//api.sparkpost
-//$apikey = "e8e6345ff301a92842beebff298541a18ffdbff7";
-//$apiroot = "https://api.sparkpost.com/api/v1";
-
-//demo.e
-//$apikey = "8df0073be24464a4f5f7d88318b1e654a729ac9c";
-//$apiroot = "https://demo.api.e.sparkpost.com/api/v1";
-
 // https://api.sparkpost.com/api/v1/metrics/deliverability/time-series?from=2017-12-01T07:00&to=2017-12-31T08:00&precision=day&metrics=count_accepted,count_clicked,count_unique_rendered
 
 $curl     = curl_init();
