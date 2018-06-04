@@ -9,14 +9,6 @@ $to   = $_POST["to"];
 $metrics = "total_msg_volume,count_unique_clicked,count_unique_rendered,count_delayed,count_sent,count_spam_complaint,count_targeted";
 $slice = "day";  //acceptable values 1min,5min,15min,hour,12hr,day,week,month
 
-//api.sparkpost
-//$apikey = "e8e6345ff301a92842beebff298541a18ffdbff7";
-//$apiroot = "https://api.sparkpost.com/api/v1";
-
-//demo.e
-//$apikey = "8df0073be24464a4f5f7d88318b1e654a729ac9c";
-//$apiroot = "https://demo.api.e.sparkpost.com/api/v1";
-
 $curl     = curl_init();
 $url      = $apiroot. "/metrics/deliverability?from=" . $from . "&to=" . $to . "&precision=" . $slice . "&metrics=" . $metrics;
 //echo $url;
