@@ -9,14 +9,6 @@ $to   = $_POST["to"];
 $metrics = "count_bounce,count_inband_bounce,count_outofband_bounce&limit=500";
 //$slice = "day";  //acceptable values 1min,5min,15min,hour,12hr,day,week,month
 
-//api.sparkpost
-//$apikey = "e8e6345ff301a92842beebff298541a18ffdbff7";
-//$apiroot = "https://api.sparkpost.com/api/v1";
-
-//demo.e
-//$apikey = "8df0073be24464a4f5f7d88318b1e654a729ac9c";
-//$apiroot = "https://demo.api.e.sparkpost.com/api/v1";
-
 //https://api.sparkpost.com/api/v1/metrics/deliverability/bounce-reason?from=2017-08-30T08:00&to=2018-01-20T09:00&metrics=count_bounce,count_inband_bounce,count_outofband_bounce&limit=500
 
 $curl     = curl_init();
