@@ -90,7 +90,7 @@ function buildPayload()
 	if ($open == "T") $transmissionLoad .= 'true, "click_tracking" : '; else $transmissionLoad .= 'false, "click_tracking" : ';
 	if ($click == "T") $transmissionLoad .= 'true, "start_time" : '; else $transmissionLoad .= 'false, "start_time" : ';
 	if (!empty($date)) $transmissionLoad .= '"' . $date . 'T' . $hour . ':' . $minutes . ':00' . $tz . '" '; else $transmissionLoad .= '"now" ';
-	$transmissionLoad .= ', "ip_pool" : "' . $ipPool . '"},';
+	if (!empty($ipPool)) $transmissionLoad .= ', "ip_pool" : "' . $ipPool . '"},'; else $transmissionLoad .= '},';
 	$transmissionLoad .= '"content" : {"template_id" : "' . $template . '","use_draft_template" : false  },';
 	$transmissionLoad .= '"campaign_id" : "' . $campaign . '", ';
 	if ($returnpath != "") $transmissionLoad .= '"return_path" : "' . $returnpath . '", ';
