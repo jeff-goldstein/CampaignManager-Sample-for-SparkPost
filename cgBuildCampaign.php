@@ -27,10 +27,11 @@ Launch a campaign with entered data
 <title>Campaign Generator for SparkPost</title>
 <link href="http://bit.ly/2elb0Hw" rel="shortcut icon">
 <link href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/tmCommonFormatting.css">
+<!--<link rel="stylesheet" type="text/css" href="css/tmCommonFormatting.css">
+<script type="text/javascript" src="js/cgCommonScripts.js"></script>-->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script type="text/javascript" src="js/cgCommonScripts.js"></script>
+
 <script>
 /* Set Calendar format; Using jQuery calendar because it works better across different browsers than default form calendar */
 $( function() 
@@ -39,7 +40,366 @@ $( function()
 } );
 </script>
 
+
+
+<!-- start of tmCommonFormatting.css -->
 <style>
+    body 
+    {
+  		font-family: Helvetica, Arial;}
+	}
+    #bkgnd 
+    {
+    	background-repeat: repeat;
+    }
+    
+    div#container 
+    {
+        width:500px;
+        height:500px;
+        overflow:auto;
+    }
+    
+     #scrollable_table 
+     {
+        display: inline-block;
+        overflow-y:scroll;
+        border-collapse: collapse;
+    }
+    
+    table {
+    	border-collapse: collapse;
+	}
+
+    h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    font-family: Helvetica, Arial;
+    }
+
+    h3 {
+    font-size: 1em;
+    margin-top: 1em;
+    margin-bottom: 0em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color: #298272;
+    font-family: Helvetica, Arial;
+    }
+
+    h4 { 
+    display: block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color: #298272;
+    font-family: Helvetica, Arial;
+    }
+    
+    select {
+    padding: 16px 20px;
+    border: 1px;
+    border-color: #298272;
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Helvetica, Arial;
+    }
+
+    /* Can use this when I don't want an expanding input field */
+    input[type=textnormal] {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    background-color: white;
+    padding: 2px 2px 2px 4px;
+    width : 300px;
+    font-family: Helvetica, Arial;
+    }
+    
+    /* Can use this when I don't want an expanding input field */
+    input[type=textlong] {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    background-color: white;
+    padding: 2px 2px 2px 4px;
+    width : 600px;
+    font-family: Helvetica, Arial;
+    }
+
+    /* This expands the text for more room while typing */
+    input[type=text] {
+    width: 350px;
+    box-sizing: border-box;
+    border: 1px solid #black;
+    font-size: 12px;
+    background-color: white;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    }
+
+    input[type=text]:focus {
+    width: 450px;
+    border: 3px solid #555;
+    }
+    
+    /* This expands the text for more room while typing */
+    input[type=textdataentry] {
+    width: 250px;
+    box-sizing: border-box;
+    border: 1px solid #black;
+    font-size: 12px;
+    background-color: white;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    }
+
+    input[type=textdataentry]:focus {
+    width: 400px;
+    height: 600px;
+    border: 3px solid #555;
+    }
+    
+    /* This expands the text for more room while typing */
+    input[type=longentry] {
+    width: 400px;
+    box-sizing: border-box;
+    border: 1px solid #black;
+    font-size: 12px;
+    background-color: white;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    }
+
+    input[type=longentry]:focus {
+    width: 600px;
+    border: 3px solid #555;
+    }
+
+    input[type=number] {
+    width: 40px;
+    height: 23px;
+    box-sizing: border-box;
+    border: 1px solid #black;
+    font-size: 12px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 2px 2px 2px 4px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    }
+
+    input[type=number]:focus {
+    width: 65px;
+    border: 3px solid #555;
+    }
+
+    input[type=date] {
+    width: 150px;
+    height: 20px;
+    box-sizing: border-box;
+    border: 8px solid #black;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 2px 2px 2px 4px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    }
+
+    input[type=date]:focus {
+    width: 200px;
+    border: 3px solid #555;
+    }
+    
+    textarea{
+    	max-width: 1200px;
+    }
+
+    #iframe1 {
+    border: solid 0 px;
+    border-radius: 8px;
+    padding-top: 1em;
+    margin: 0 auto;
+    font-family: Helvetica, Arial;
+    }
+
+    .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    width: 1250px;
+    }
+
+    .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    font-size: 12px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+    visibility: visible;
+    }
+
+    /* This forces more consistent look and field across browsers for pulldown select fields */
+    @media screen and (-webkit-min-device-pixel-ratio:0) {  /*safari and chrome*/
+    select {
+        height:25px;
+        line-height:25px;
+        background:#f4f4f4;
+    } 
+    }
+    select::-moz-focus-inner { /*Remove button padding in FF*/ 
+    border: 0;
+    padding: 0;
+    }
+    @-moz-document url-prefix() { /* targets Firefox only */
+    select {
+        padding: 5px 0!important;
+    }
+    }        
+    @media screen\0 { /* IE Hacks: targets IE 8, 9 and 10 */        
+    select {
+        height:30px;
+        line-height:30px;
+    }     
+    }
+    body {margin:0;}
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: inline-block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+ul.topnav li a:hover {background-color: #555;}
+
+ul.topnav li.icon {display: none;}
+
+@media screen and (max-width:680px) {
+  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li.icon {
+    float: right;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width:680px) {
+  ul.topnav.responsive {position: relative;}
+  ul.topnav.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.topnav.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.topnav.responsive li a {
+    display: block;
+    text-align: left;
+  }
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the buttons inside the tab */
+div.tab button2 {
+    background-color: #e0e2e5;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button2:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button2.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+<!--end tmCommonFormatting -->
+
+
 #scrollable_table tr:last-child td {
     border-bottom:0;
 }
@@ -69,7 +429,7 @@ $( function()
 
 <?php
 	ini_set('post_max_size', '2000000');
-    include 'cgPHPLibraries.php';
+    //include 'cgPHPLibraries.php';
     
     $parametersFile = "config/Parameters.ini";
 	$paramonly_array = parse_ini_file( $parametersFile, true );
@@ -97,10 +457,20 @@ $( function()
     <a href="javascript:void(0);" style="font-size:15px;" onclick="generatorNav()">☰</a>
   </li>
 </ul>
-</td></tr>
+</td></tr></table><table>
 <tr><td align="left">
 <iframe src="http://free.timeanddate.com/clock/i5ze60a7/n5446/fs12/tt0/tw0/tm1/ta1/tb2" frameborder="0" width="201" height="16"></iframe>
-<td></tr></table>
+</td><td width="1200px" align="right">
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</td></tr></table>
 </div>
 
 <br>
@@ -218,13 +588,13 @@ $( function()
                 <input checked name="open" type="checkbox" value="T"> Turn on Open Tracking
                 <br>
                 <input checked name="click" type="checkbox" value="T"> Turn on Click Tracking
+                <br><br>
+                IP Pool*: <input required name="ipPool" type="textnormal" value="default">
                 <br>
                 <h3>Optional Items (leave blank if you don't want to use them)...</h3>
                 <h4>Want Proof, Enter Your Email Address Here</h4>
                 <input name="email" type="email" style="width:400px" value="">
                 <h4>Enter Meta Data: first column Is the Metadata Field Name, the second column is the data:</h4>
-                Metadata Field Name: <input name="meta1" type="textnormal" value=""> &nbsp;&nbsp;&nbsp;Data: <input name="data1" type="textnormal" value="">
-                <br><br>
                 Metadata Field Name: <input name="meta2" type="textnormal" value=""> &nbsp;&nbsp;&nbsp;Data: <input name="data2" type="textnormal" value="">
                 <br><br>
                 Metadata Field Name: <input name="meta3" type="textnormal" value=""> &nbsp;&nbsp;&nbsp;Data: <input name="data3" type="textnormal" value="">
