@@ -48,8 +48,7 @@ $meta3 = trim($_POST["meta3"], " ");
 $data3 = trim($_POST["data3"], " ");
 $meta4 = trim($_POST["meta4"], " ");
 $data4 = trim($_POST["data4"], " ");
-$meta5 = trim($_POST["meta5"], " ");
-$data5 = trim($_POST["data5"], " ");
+$ipPool = trim($_POST["ipPool"], " ");
 $jsonLoad  = $_POST["json"];
 $globalsub = $_POST["globalsub"];
 $recipientCount = $_POST["recipientCount"];
@@ -112,6 +111,17 @@ function generatorNav() {
 }
 </script>
 
+<table><tr><td width="1200px" align="left">
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</td></tr></table>
+
 <br><table width = 1000 border=0><tr><td><h1><center>Campaign Submission Receipt</center></h1></td></tr></table>
 
 <?php
@@ -147,6 +157,7 @@ $validationText .= "   Scheduled Date/Time: " . $date . " at: " . $hour . ":" . 
 if ($date && $now) {$validationText .= "</h4>";} else {$validationText .= "</h5>";}
 $validationText .= "<h5>Track Open Flag: " . $open . "</h5>";
 $validationText .= "<h5>Track Clicks Flag: " . $click . "</h5>";
+$validationText .= "<h5>IP Pool: " . $ipPool . "</h5>";
 if (strlen($globalsub) > 5) $validationText .= "<h5>Global Substitution Text Entered</h5>"; else $validationText .= "<h5>Global Substitution Text Not Entered</h5>";
 $validationText .= "<form action=''>";
 switch ($whichrecipients)
@@ -171,14 +182,13 @@ case 'RecipientSelect':
 }	
 $validationText .= "</form><br>";
 $validationText .= "<p><table width='400'>";
-if ($meta1 || $meta2 || $meta3 || $meta4 || $meta5) 
+if ($meta1 || $meta2 || $meta3 || $meta4 ) 
 {
    $validationText .= "<tr><th align=left>Metadata Names</th><th align=left>Metadata Values</th></tr>";
    if ($meta1) {$validationText .= "<tr><td width=200 height=30>" . $meta1 . "</td><td width=200 height=30>" . $data1 . "</td></tr>";}
    if ($meta2) {$validationText .= "<tr><td width=200 height=30>" . $meta2 . "</td><td width=200 height=30>" . $data2 . "</td></tr>";}
    if ($meta3) {$validationText .= "<tr><td width=200 height=30>" . $meta3 . "</td><td width=200 height=30>" . $data3 . "</td></tr>";}
    if ($meta4) {$validationText .= "<tr><td width=200 height=30>" . $meta4 . "</td><td width=200 height=30>" . $data4 . "</td></tr>";}
-   if ($meta5) {$validationText .= "<tr><td width=200 height=30>" . $meta5 . "</td><td width=200 height=30>" . $data5 . "</td></tr>";}
 }
 
 $validationText .= "</table>";
@@ -225,8 +235,7 @@ function confirmedSend()
     var data3 = "<?php echo $data3; ?>";
     var meta4 = "<?php echo $meta4; ?>";
     var data4 = "<?php echo $data4; ?>";
-    var meta5 = "<?php echo $meta5; ?>";
-    var data5 = "<?php echo $data5; ?>";
+    var ipPool = "<?php echo $ipPool; ?>";
     var recipientCount = "<?php echo $recipientCount; ?>";
     var validationText = "<?php echo $validationText; ?>";
     var email = "<?php echo $email; ?>";
@@ -244,7 +253,7 @@ function confirmedSend()
     type: "POST",
     data: {"template" : template, "recipients" : recipients, "validationText" : validationText, "email" : email, "jsonLoad" : jsonLoad, "recipientCount" : recipientCount, "recipientUploadFile" : recipientUploadFile,
       	   "campaign" : campaign, "returnpath" : returnpath, "open" : open, "click" : click, "now" : now, "date" : date, "hour" : hour, "minutes" : minutes, "tz" : tz, "globalsub" : globalsub, "count" : recipientCount,
-      	   "meta1" :  meta1, "data1" : data1,   "meta2" :  meta2, "data2" : data2, "meta3" :  meta3, "data3" : data3, "meta4" :  meta4, "data4" : data4, "meta5" :  meta5, "data5" : data5, "whichrecipients" : whichrecipients },
+      	   "meta1" :  meta1, "data1" : data1,   "meta2" :  meta2, "data2" : data2, "meta3" :  meta3, "data3" : data3, "meta4" :  meta4, "data4" : data4, "ipPool" : ipPool, "whichrecipients" : whichrecipients },
     beforeSend:function()
     {
      	if (whichrecipients == "FullFile") 
