@@ -589,7 +589,7 @@ function googleTranslateElementInit() {
                 <br>
                 <input checked name="click" type="checkbox" value="T"> Turn on Click Tracking
                 <br><br>
-                IP Pool*: <input required name="ipPool" type="textnormal" value="default">
+                IP Pool: <input name="ipPool" type="textnormal" value="">
                 <br>
                 <h3>Optional Items (leave blank if you don't want to use them)...</h3>
                 <h4>Want Proof, Enter Your Email Address Here</h4>
