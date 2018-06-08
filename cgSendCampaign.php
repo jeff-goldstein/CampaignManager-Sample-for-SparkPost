@@ -55,8 +55,7 @@ $meta3 = trim($_POST["meta3"], " ");
 $data3 = trim($_POST["data3"], " ");
 $meta4 = trim($_POST["meta4"], " ");
 $data4 = trim($_POST["data4"], " ");
-$meta5 = trim($_POST["meta5"], " ");
-$data5 = trim($_POST["data5"], " ");
+$ipPool = trim($_POST["ipPool"], " ");
 $jsonLoad  = $_POST["jsonLoad"];
 $globalsub  = $_POST["globalsub"];
 $validationText = $_POST["validationText"];
@@ -82,7 +81,7 @@ function buildPayload()
 {
 	global $key, $template, $recipients, $now, $date, $hour, $minutes, $tz, $campaign, $returnpath, $open, $click, $email; 
 	global $meta1, $data1, $meta2, $data2, $meta3, $data3, $meta4, $data4, $meta5, $data5, $jsonLoad, $globalsub, $recipientCount;
-	global $recDisplay;
+	global $recDisplay, $ipPool;
 
 	//
 	//Build the payload for the Transmission API call
@@ -90,19 +89,19 @@ function buildPayload()
 	$transmissionLoad = '{"options": { "open_tracking" :';
 	if ($open == "T") $transmissionLoad .= 'true, "click_tracking" : '; else $transmissionLoad .= 'false, "click_tracking" : ';
 	if ($click == "T") $transmissionLoad .= 'true, "start_time" : '; else $transmissionLoad .= 'false, "start_time" : ';
-	if (!empty($date)) $transmissionLoad .= '"' . $date . 'T' . $hour . ':' . $minutes . ':00' . $tz . '"}, '; else $transmissionLoad .= '"now"}, ';
+	if (!empty($date)) $transmissionLoad .= '"' . $date . 'T' . $hour . ':' . $minutes . ':00' . $tz . '" '; else $transmissionLoad .= '"now" ';
+	$transmissionLoad .= ', "ip_pool" : "' . $ipPool . '"},';
 	$transmissionLoad .= '"content" : {"template_id" : "' . $template . '","use_draft_template" : false  },';
 	$transmissionLoad .= '"campaign_id" : "' . $campaign . '", ';
 	if ($returnpath != "") $transmissionLoad .= '"return_path" : "' . $returnpath . '", ';
 	$transmissionLoad .= '"description" : "' . $recDisplay . ' recipients targeted",';
-	if (($meta1 != "") or ($meta2 != "") or ($meta3 != "") or ($meta4 != "") or ($meta5 != ""))
+	if (($meta1 != "") or ($meta2 != "") or ($meta3 != "") or ($meta4 != ""))
 	{
    		$transmissionLoad .= '"metadata" : {';
    		if ($meta1 != "") {$transmissionLoad .= '"' . $meta1 . '":"' . $data1 . '",';}
    		if ($meta2 != "") {$transmissionLoad .= '"' . $meta2 . '":"' . $data2 . '",';}
    		if ($meta3 != "") {$transmissionLoad .= '"' . $meta3 . '":"' . $data3 . '",';}
-   		if ($meta4 != "") {$transmissionLoad .= '"' . $meta4 . '":"' . $data4 . '",';}
-   		if ($meta5 != "") {$transmissionLoad .= '"' . $meta5 . '":"' . $data5 . '"';}
+   		if ($meta4 != "") {$transmissionLoad .= '"' . $meta4 . '":"' . $data4 . '"';}
    		$transmissionLoad = trim($transmissionLoad, ",");
    		$transmissionLoad .= "},";
 	}
@@ -118,6 +117,7 @@ function buildPayload()
 		$transmissionLoad .= '"recipients" : {"list_id" : "' . $recipients . '"}';
 	}
 	$transmissionLoad .= "}";
+	//echo $transmissionLoad;
 	return $transmissionLoad;
 	
 }
