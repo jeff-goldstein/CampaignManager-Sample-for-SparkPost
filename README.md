@@ -5,23 +5,23 @@ I'm happy to say that a new free application has been created to fill the SparkP
 
 CG is not competition for a full campaign manager system like those that supports segmentation, data management and reporting; this is a lite weight campaign generator that has some fairly cool capabilities that you won't see anywhere else. Before getting started on details about the application, as one of the architects] of the application I want to tell you about one of the founding principles of the application, "keep no data". As it will be described below, the user will enter in a SparkPost API key in order for the application to obtain SparkPost account information like stored template names, recipient lists, sending domain names, etc. What is does not do is store information about your account on the CG server. To be clear, it will not store your API Key or User Data at all. We welcome feature enhancement requests as-long-as it can be done leveraging the SparkPost API's and does not involve storing any data on the CG server. More details about application functionality will be described below after we get through some of the typical GitHub repository sections.
 
-Prerequisites:
+##Prerequisites:
 Before using this library, you must have:
 
 A SparkPost Account, [sign up for a new account][sparkpost sign up] or login to SparkPost
 A valid SparkPost API Key. Check out our Support Center for information on how to create API keys with the following rights: 'Recipient Lists: Read/Write, Templates: Read/Write, Transmissions: Read/Write and Sending Domains: Read'.
 If you are a SparkPost Elite/Enterprise customer, you need to enter your API root URL as well.
 
-Installation:
+##Installation:
 Copy all the files over to your web server.  In the config folder there is also a ini file that needs to be configured.
 
-Using Campaign Generator for SparkPost
-Logging In:
+##Using Campaign Generator for SparkPost
+###Logging In:
 The landing page for the application is at http://www.geekwithapersonality.com/cgKey.php. If you are a SparkPost.com users, all you have to do is enter a SparkPost API Key that has the following rights: 'Recipient Lists: Read/Write, Templates: Read/Write, Transmissions: Read/Write and Sending Domains: Read'.
 
 If you are a SparkPost Elite/Enterprise customer, you need to enter your API root URL as well. That's it! The CG system will now be able to schedule and cancel campaigns on your behalf.
 
-Generating a Campaign with Stored Template && Stored Recipients
+###Generating a Campaign with Stored Template && Stored Recipients
 For Campaign Generation, the system allows for three different approaches, one where you leverage both stored templates and stored recipients, other where you can paste in your own CSV or JSON list of recipients along with their substitution data or you can upload a CSV file for conversion to the JSON structure needed by SparkPost. Most of the fields and features for each approach are the same. They all use stored templates, allow for campaigns to be immediately kicked off or scheduled for up to one month out (SparkPost limitation), create a campaign name, set open and click tracking flags and create up to 4 metadata key/value pairs.
 
 Each approach also allows for the user to preview what the email may look like. The CG system takes the template and the data from the first recipient and merges them together to show you what the email would look like for that user.
@@ -41,13 +41,13 @@ For further info, please see the CG Help Text. You can enter up to 700k of data,
 
 Some of you may be saying, but what about global data? Well that is supported in both Campaign Generation approaches. There is a data entry field that is displayed when you press the 'Show Global Sub' button. In that field, you can enter up to 70k of global substitution data! That data will not only be used in the email, but is used in the Preview and the Template/Data comparisons.
 
-Cancelling Scheduled Campaigns:
+###Cancelling Scheduled Campaigns:
 The 'Manage Scheduled Campaigns' tab will take you to a table showing you a list of your scheduled campaigns. All you need to do is to copy one of the Campaign Id's and paste it into the field at the bottom of the page, then press the 'Cancel Campaign' button. Right now, any Campaign that has 10 minutes before it's scheduled time can be cancelled.
 
-Message Events:
+###Message Events:
 If you want to review what happened to a specific email, you can go to the tab labeled 'Email Tracer'.  There you can enter in a specific email address and the system will grab everything SparkPost has for that user for the last 10 days.  From there you have various filter capabilities in order to scope down the data.
 
-Analytics:
+###Analytics:
 The newest component is an Analytics page.  The data that is obtained from SparkPost is fixed but you can select what days over the last six month you want to look at.  Also, several of the reports allow for you to 'zoom' into the report simply by dragging your cursor across the graph.
 
 OK, so wrapping this up. Campaign Generator for SparkPost is free, and ready for you to use. Because it does NOT hold any data and uses your API Keys, you won't see anyone else's data and they won't see yours. Please hit the 'Contact' link at the top if you have any questions, find any bugs, or have any enhancement requests. This is open sourced so if you want to fix something or add something, please feel free, all help is appreciated.
