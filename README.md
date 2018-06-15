@@ -1,7 +1,7 @@
 # CampaignManager-Sample-for-SparkPost
 New Free Campaign Generator for SparkPost, Yes Free
 High Level Description
-I'm happy to say that a new free application has been created to fill the SparkPost hole of not being able to create an email/sms/push campaign without coding or a fee based ESP partner. The application, " Campaign Generator for SparkPost" (CG) takes a nifty approach of using your own API Key's in a web hosted application so there is NO install or set-up unless you want to download the application from a GitHub site at https://github.com/jeff-goldstein/CampaignGeneratorSparkPost and use the application on premise.
+I'm happy to say that a new free application has been created to fill the SparkPost hole of not being able to create an email/sms/push campaign without coding or a fee based ESP partner. The application, " Campaign Generator for SparkPost" (CG) takes a nifty approach of using your own API Key's in a web hosted application so there is NO install or set-up unless you want to download the application from a GitHub site at https://github.com/jeff-goldstein/CampaignManager-Sample-for-SparkPost and use the application on premise.
 
 CG is not competition for a full campaign manager system like those that supports segmentation, data management and reporting; this is a lite weight campaign generator that has some fairly cool capabilities that you won't see anywhere else. Before getting started on details about the application, as one of the architects] of the application I want to tell you about one of the founding principles of the application, "keep no data". As it will be described below, the user will enter in a SparkPost API key in order for the application to obtain SparkPost account information like stored template names, recipient lists, sending domain names, etc. What is does not do is store information about your account on the CG server. To be clear, it will not store your API Key or User Data at all. We welcome feature enhancement requests as-long-as it can be done leveraging the SparkPost API's and does not involve storing any data on the CG server. More details about application functionality will be described below after we get through some of the typical GitHub repository sections.
 
@@ -15,7 +15,7 @@ Installation
 Copy all files that start with 'cg' and place onto your web server
 Using Campaign Generator for SparkPost
 Logging In
-The landing page for the application is at http://www.geekwithapersonality.com/cgi-bin/cgKey.php. If you are a SparkPost.com users, all you have to do is enter a SparkPost API Key that has the following rights: 'Recipient Lists: Read/Write, Templates: Read/Write, Transmissions: Read/Write and Sending Domains: Read'.
+The landing page for the application is at http://www.geekwithapersonality.com/cgKey.php. If you are a SparkPost.com users, all you have to do is enter a SparkPost API Key that has the following rights: 'Recipient Lists: Read/Write, Templates: Read/Write, Transmissions: Read/Write and Sending Domains: Read'.
 
 If you are a SparkPost Elite/Enterprise customer, you need to enter your API root URL as well. That's it! The CG system will now be able to schedule and cancel campaigns on your behalf.
 
